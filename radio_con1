@@ -1,0 +1,162 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://obniz.io/js/jquery-3.2.1.min.js"></script>
+    <script
+      src="https://unpkg.com/obniz@3.x/obniz.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      *,
+      *:before,
+      *:after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+      }
+
+      html {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 62.5%;
+      }
+
+      .btn,
+      a.btn,
+      button.btn {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.5;
+        position: relative;
+        display: inline-block;
+        padding: 1rem 4rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        color: #212529;
+        border-radius: 0.5rem;
+      }
+
+      a.btn--yellow {
+        color: #000;
+        background-color: #fff100;
+        border-bottom: 5px solid #ccc100;
+      }
+
+      a.btn--yellow:hover {
+        margin-top: 3px;
+        color: #000;
+        background: #fff20a;
+        border-bottom: 2px solid #ccc100;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="obniz-debug"></div>
+    <h1></h1>
+
+    <center>
+      <br />
+      <a class="btn btn--yellow btn--cubic" id="forwardleft">↖︎<br /></a>
+
+      <a class="btn btn--yellow btn--cubic" id="forward">↑<br /></a>
+
+      <a class="btn btn--yellow btn--cubic" id="forwardright">↗︎<br /></a><br />
+      　
+      <a class="btn btn--yellow btn--cubic" id="left">←<br /></a>
+
+      <a class="btn btn--yellow btn--cubic" id="stop">●<br /></a>
+
+      <a class="btn btn--yellow btn--cubic" id="right">→<br /></a><br />
+      　
+      <a class="btn btn--yellow btn--cubic" id="reverse">↓<br /></a>
+    </center>
+    <img id="image" />
+
+    <div id="obniz128.html"></div>
+
+    <script>
+      var obniz = new Obniz("OBNIZ_ID_HERE");
+      obniz.onconnect = async function () {
+        //obniz.io6.output(true);
+        //obniz.io9.output(false);
+        //var cam = obniz.wired("JpegSerialCam", { vcc: 4, cam_tx: 5, cam-rx: 6, gnd: 3});
+
+        var motorLeft = obniz.wired("DCMotor", { forward: 0, back: 1 });
+        var motorRight = obniz.wired("DCMotor", { forward: 2, back: 3 });
+
+        //await cam.startWait({ baud: 38400 });
+        //await cam.setBaudWait(115200);
+        //await cam.setSizeWait("160x120");
+
+        /*while (true) {
+                const jpegData = await cam.takeWait();
+                document.getElementById("image").src = "data:image/jpeg;base64," + cam.arrayToBase64(jpegData);
+            }
+            */
+
+        // forwardleft
+        $("#forwardleft").on("touchstart mousedown", () => {
+          motorLeft.power(50);
+          motorRight.power(100);
+          motorLeft.reverse(); //ボタンを押すと動く
+          motorRight.reverse();
+        });
+
+        // forward
+        $("#forward").on("touchstart mousedown", () => {
+          motorLeft.power(100);
+          motorRight.power(100);
+          motorLeft.reverse(); //ボタンを押すと動く
+          motorRight.reverse();
+        });
+
+        // forwardleft
+        $("#forwardright").on("touchstart mousedown", () => {
+          motorLeft.power(100);
+          motorRight.power(50);
+          motorLeft.reverse(); //ボタンを押すと動く
+          motorRight.reverse();
+        });
+
+        // turn right
+        $("#right").on("touchstart mousedown", () => {
+          motorLeft.power(100);
+          motorRight.power(100);
+          motorLeft.reverse(); //ボタンを押すと動く
+          motorRight.forward();
+        });
+
+        // turn left
+        $("#left").on("touchstart mousedown", () => {
+          motorLeft.power(100);
+          motorRight.power(100);
+          motorRight.reverse(); //ボタンを押すと動く
+          motorLeft.forward();
+        });
+
+        // reverse
+        $("#reverse").on("touchstart mousedown", () => {
+          motorLeft.power(100);
+          motorRight.power(100);
+          motorRight.forward(); //ボタンを押すと動く
+          motorLeft.forward();
+        });
+
+        $("#stop").on("touchstart mousedown", () => {
+          motorRight.stop(); //ボタンを押すと動く
+          motorLeft.stop();
+        });
+      };
+    </script>
+  </body>
+</html>
