@@ -10,7 +10,7 @@ These programs are the ones I created for obniz
 
 * radio_con1
 
- If you connect obniz to the motor, you can operate it on the html screen.
+ If you connect a motor to pin 0 and 1, pin 2 and 3 of obniz respectively, you can move it in various directions on the html screen.
 
  Written in html, javascript, css
 
