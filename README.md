@@ -1,5 +1,5 @@
-# my-obniz-projects
-These programs are the ones I created for obniz
+# radio_car
+You can also run your radio-controlled car on your smartphone or computer. Yes, with obniz!
 
 # Requirement
 
