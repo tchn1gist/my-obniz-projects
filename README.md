@@ -15,6 +15,6 @@ You can also run your radio-controlled car on your smartphone or computer. Yes, 
  Written in html, javascript, css
 
 # Author
-Twitter : @tchnlgy
+Twitter : @tchn1gy
 
 I'm a junior high school student and live in Japan.
