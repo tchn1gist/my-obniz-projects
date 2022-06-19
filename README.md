@@ -14,11 +14,11 @@ You can also run your radio-controlled car on your smartphone or computer. Yes, 
 
  Written in html, javascript, css
  
-* car_body
+* car_bodies
 
  Car bodies of 3d-objects.
 
 # Author
-Twitter : @tchn1gy
+Twitter : @tchn1gist
 
 I'm a junior high school student and live in Japan.
