@@ -5,6 +5,7 @@ You can also run your radio-controlled car on your smartphone or computer. Yes, 
 
 * obnizOS 3.5.0
 * obnizjs 3.*
+* Nodejs 16.15.1
 
 # about these files
 
